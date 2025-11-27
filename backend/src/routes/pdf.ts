@@ -3,7 +3,7 @@ import { testPdf } from "../controllers/pdfController";
 
 const router = Router();
 
-router.get("/pdf/test", testPdf);
+router.post("/pdf/test", testPdf);
 
 export default router;
 

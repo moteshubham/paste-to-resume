@@ -1,11 +1,12 @@
-// Placeholder PDF service. Real PDF generation will be added later with Puppeteer.
+// Placeholder for future PDF generation with Puppeteer.
+// Right now, only a stub.
 
-export const generatePdfFromResume = async (resumeJson: any) => {
-  // Convert JSON to a simple text response for now
+export const generatePdfFromJson = async (data: any) => {
   return {
     ok: true,
+    mock: true,
     message: "PDF generation placeholder reached",
-    resume: resumeJson
+    dataReceived: data
   };
 };
 

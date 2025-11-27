@@ -1,11 +1,10 @@
 import { Request, Response } from "express";
-import { generatePdfFromResume } from "../services/pdfService";
-import { loadBaseResume } from "../services/resumeStorage";
+import { generatePdfFromJson } from "../services/pdfService";
 
 export const testPdf = async (req: Request, res: Response) => {
-  const resume = loadBaseResume();
-  const result = await generatePdfFromResume(resume);
+  const jsonData = req.body || { test: true };
+  const result = await generatePdfFromJson(jsonData);
 
-  res.json({ ok: true, pdf: result });
+  res.json({ ok: true, result });
 };
 
