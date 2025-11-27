@@ -6,6 +6,7 @@ import geminiRouter from "./routes/gemini";
 import promptRouter from "./routes/prompt";
 import pdfRouter from "./routes/pdf";
 import generateRouter from "./routes/generate";
+import jsonTestRouter from "./routes/jsonTest";
 
 dotenv.config();
 
@@ -18,6 +19,7 @@ app.use("/api", geminiRouter);
 app.use("/api", promptRouter);
 app.use("/api", pdfRouter);
 app.use("/api", generateRouter);
+app.use("/api", jsonTestRouter);
 
 const port = process.env.PORT ? Number(process.env.PORT) : 4000;
 
