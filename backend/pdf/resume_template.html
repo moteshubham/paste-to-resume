@@ -1,12 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Resume PDF Template</title>
+  <meta charset="UTF-8" />
+  <title>Resume</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 32px; }
+    h1 { margin: 0; }
+    .section { margin-top: 18px; }
+    .skills span { display:inline-block; margin-right:6px; padding:4px 8px; border:1px solid #ddd; border-radius:4px; }
+    .work-item { margin-bottom:12px; }
+  </style>
 </head>
 <body>
-    <h1>PDF Template Placeholder</h1>
-    <p>This template will be used to generate PDFs using real resume data.</p>
+  <header>
+    <h1 id="name">{{name}}</h1>
+    <div id="contact">{{contact}}</div>
+  </header>
+
+  <div class="section" id="summary">
+    <h2>Summary</h2>
+    <div id="summaryText">{{summary}}</div>
+  </div>
+
+  <div class="section" id="skills">
+    <h2>Skills</h2>
+    <div class="skills">{{skills}}</div>
+  </div>
+
+  <div class="section" id="work">
+    <h2>Work</h2>
+    <div id="workItems">
+      {{workItems}}
+    </div>
+  </div>
 </body>
 </html>
-

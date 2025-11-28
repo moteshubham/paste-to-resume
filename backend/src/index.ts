@@ -1,5 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
+import path from "path";
 import healthRouter from "./routes/health";
 import resumeRouter from "./routes/resume";
 import geminiRouter from "./routes/gemini";
@@ -12,6 +13,7 @@ dotenv.config();
 
 const app = express();
 app.use(express.json());
+app.use("/pdfs", express.static(path.join(__dirname, "../pdfs")));
 
 app.use("/api", healthRouter);
 app.use("/api", resumeRouter);
