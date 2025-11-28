@@ -31,13 +31,26 @@ export const sendToGemini = async (prompt: string) => {
   }
 
   try {
+    // FIRST ATTEMPT
     const result = await model.generateContent(prompt);
     const text = result.response.text();
+    const trimmed = text.trim();
 
-    return {
-      ok: true,
-      raw: text
-    };
+    if (trimmed.startsWith("{") || trimmed.startsWith("[")) {
+      return { ok: true, raw: text };
+    }
+
+    // SECOND ATTEMPT — FORCE JSON
+    const retryPrompt = `${prompt}
+
+The previous output was not valid JSON.
+Return ONLY valid JSON now. No markdown. No explanation.
+`;
+
+    const retryResult = await model.generateContent(retryPrompt);
+    const retryText = retryResult.response.text();
+
+    return { ok: true, raw: retryText, retry: true };
   } catch (err: any) {
     return {
       ok: false,

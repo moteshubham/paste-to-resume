@@ -30,16 +30,34 @@ export const generateResume = async (req: Request, res: Response) => {
 
     // Step 4: Extract JSON from AI output
     const extracted = extractJson(geminiResponse.raw);
+    let generatedResume: any;
 
     if (!extracted.ok) {
-      return res.status(400).json({
-        ok: false,
-        error: "Invalid JSON returned by Gemini",
-        details: extracted
-      });
-    }
+      const raw = geminiResponse.raw || "";
+      const start = raw.indexOf("{");
+      const end = raw.lastIndexOf("}");
 
-    const generatedResume = extracted.json;
+      if (start !== -1 && end !== -1 && end > start) {
+        const slice = raw.slice(start, end + 1);
+        try {
+          generatedResume = JSON.parse(slice);
+        } catch (e) {
+          return res.status(400).json({
+            ok: false,
+            error: "Failed to extract clean JSON from Gemini output",
+            details: extracted
+          });
+        }
+      } else {
+        return res.status(400).json({
+          ok: false,
+          error: "Gemini returned no JSON-like content",
+          details: extracted
+        });
+      }
+    } else {
+      generatedResume = extracted.json;
+    }
 
     // Step 5: Validate basic resume structure
     const { valid, errors } = validateResume(generatedResume);

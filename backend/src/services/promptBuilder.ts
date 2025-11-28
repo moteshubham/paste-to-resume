@@ -84,6 +84,10 @@ ${jobDescription}
 ## OUTPUT
 
 Return the final optimized JSON Resume object. Only JSON.
+
+IMPORTANT:
+Return ONLY valid JSON. No markdown, no comments, no text outside JSON.
+If unsure, return an empty valid JSON object.
   `;
 };
 
