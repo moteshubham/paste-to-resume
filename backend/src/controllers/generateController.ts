@@ -2,6 +2,8 @@ import { Request, Response } from "express";
 import { loadBaseResume } from "../services/resumeStorage";
 import { buildResumePrompt } from "../services/promptBuilder";
 import { sendToGemini } from "../services/geminiService";
+import { extractJson } from "../utils/jsonExtractor";
+import { validateBaseResume } from "../services/validationService";
 import { saveGeneratedResume } from "../services/generatedResumeStorage";
 import { generatePdfFromJson } from "../services/pdfService";
 
@@ -13,36 +15,61 @@ export const generateResume = async (req: Request, res: Response) => {
       return res.status(400).json({ ok: false, error: "Job description missing or invalid" });
     }
 
-    // Load base JSON resume
-    const base = loadBaseResume();
+    // Step 1: Load base resume
+    const baseResume = loadBaseResume();
 
-    // Build prompt from base resume + JD
-    const prompt = buildResumePrompt(base, jd);
+    // Step 2: Build prompt
+    const prompt = buildResumePrompt(baseResume, jd);
 
-    // Send to Gemini (mock response for now)
-    const geminiOutput = await sendToGemini(prompt);
+    // Step 3: Call Gemini (real SDK)
+    const geminiResponse = await sendToGemini(prompt);
 
-    // For now we treat Gemini output as "generated resume"
-    const generatedResume = {
-      mock: true,
-      geminiOutput,
-      originalPrompt: prompt
-    };
+    if (!geminiResponse.ok) {
+      return res.status(500).json({ ok: false, error: "Gemini error", details: geminiResponse });
+    }
 
-    // Save generated JSON resume to file
-    const savedInfo = saveGeneratedResume(generatedResume);
+    // Step 4: Extract JSON from AI output
+    const extracted = extractJson(geminiResponse.raw);
 
-    // Generate PDF (mock)
-    const pdfResult = await generatePdfFromJson(generatedResume);
+    if (!extracted.ok) {
+      return res.status(400).json({
+        ok: false,
+        error: "Invalid JSON returned by Gemini",
+        details: extracted
+      });
+    }
 
-    res.json({
+    const generatedResume = extracted.json;
+
+    // Step 5: Validate basic resume structure
+    const { valid, errors } = validateBaseResume(generatedResume);
+
+    if (!valid) {
+      return res.status(400).json({
+        ok: false,
+        error: "Generated resume failed validation",
+        details: errors
+      });
+    }
+
+    // Step 6: Save generated resume JSON
+    const saveInfo = saveGeneratedResume(generatedResume);
+
+    // Step 7: Generate PDF (mock for now)
+    const pdfInfo = await generatePdfFromJson(generatedResume);
+
+    return res.json({
       ok: true,
-      message: "Mock generation completed",
-      saved: savedInfo,
-      pdf: pdfResult
+      saved: saveInfo,
+      pdf: pdfInfo,
+      resume: generatedResume
     });
-  } catch (err) {
-    res.status(500).json({ ok: false, error: "Server error" });
+
+  } catch (err: any) {
+    return res.status(500).json({
+      ok: false,
+      error: err.message || "Internal server error"
+    });
   }
 };
 
