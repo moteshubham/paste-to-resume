@@ -1,21 +1,11 @@
 import Ajv from "ajv";
+import schema from "../types/jsonResumeSchema.json";
 
 const ajv = new Ajv({ allErrors: true });
 
-const baseResumeSchema = {
-  type: "object",
-  properties: {
-    basics: { type: "object" },
-    work: { type: "array" },
-    skills: { type: "array" },
-    education: { type: "array" }
-  },
-  additionalProperties: true
-};
+const validate = ajv.compile(schema);
 
-const validate = ajv.compile(baseResumeSchema);
-
-export const validateBaseResume = (data: any) => {
+export const validateResume = (data: any) => {
   const valid = validate(data);
   return { valid, errors: validate.errors };
 };

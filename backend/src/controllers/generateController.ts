@@ -3,7 +3,7 @@ import { loadBaseResume } from "../services/resumeStorage";
 import { buildResumePrompt } from "../services/promptBuilder";
 import { sendToGemini } from "../services/geminiService";
 import { extractJson } from "../utils/jsonExtractor";
-import { validateBaseResume } from "../services/validationService";
+import { validateResume } from "../services/validationService";
 import { saveGeneratedResume } from "../services/generatedResumeStorage";
 import { generatePdfFromJson } from "../services/pdfService";
 
@@ -42,7 +42,7 @@ export const generateResume = async (req: Request, res: Response) => {
     const generatedResume = extracted.json;
 
     // Step 5: Validate basic resume structure
-    const { valid, errors } = validateBaseResume(generatedResume);
+    const { valid, errors } = validateResume(generatedResume);
 
     if (!valid) {
       return res.status(400).json({
