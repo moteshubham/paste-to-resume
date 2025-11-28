@@ -8,6 +8,7 @@ import promptRouter from "./routes/prompt";
 import pdfRouter from "./routes/pdf";
 import generateRouter from "./routes/generate";
 import jsonTestRouter from "./routes/jsonTest";
+import quickRouter from "./routes/quick";
 
 dotenv.config();
 
@@ -22,6 +23,7 @@ app.use("/api", promptRouter);
 app.use("/api", pdfRouter);
 app.use("/api", generateRouter);
 app.use("/api", jsonTestRouter);
+app.use("/api", quickRouter);
 
 const port = process.env.PORT ? Number(process.env.PORT) : 4000;
 
