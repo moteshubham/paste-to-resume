@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import puppeteer from "puppeteer";
+import { sanitize } from "../utils/sanitizeFilename";
 
 const templatePath = path.join(__dirname, "../../pdf/resume_template.html");
 const outputDir = path.join(__dirname, "../../pdfs");
@@ -52,9 +53,12 @@ function escapeHtml(str: string) {
     .replace(/'/g, "&#039;");
 }
 
-export const generatePdfFromJson = async (data: any) => {
+export const generatePdfFromJson = async (data: any, jobRole?: string, company?: string) => {
+  const role = sanitize(jobRole || "");
+  const comp = sanitize(company || "");
   const timestamp = Date.now();
-  const filename = `Shubham_Mote_${timestamp}.pdf`;
+
+  const filename = `Shubham_Mote_${role}_${comp}_${timestamp}.pdf`;
   const outPath = path.join(outputDir, filename);
 
   const html = renderHtmlFromResume(data);

@@ -16,7 +16,7 @@ let model: any = null;
 if (apiKey) {
   const genAI = new GoogleGenerativeAI(apiKey);
   model = genAI.getGenerativeModel({
-    model: "gemini-1.5-flash" // later can switch to pro
+    model: "gemini-2.5-flash" // later can switch to pro
   });
 }
 

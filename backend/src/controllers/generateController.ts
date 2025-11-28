@@ -9,7 +9,7 @@ import { generatePdfFromJson } from "../services/pdfService";
 
 export const generateResume = async (req: Request, res: Response) => {
   try {
-    const { jd } = req.body;
+    const { jd, jobRole = "", company = "" } = req.body;
 
     if (!jd || typeof jd !== "string") {
       return res.status(400).json({ ok: false, error: "Job description missing or invalid" });
@@ -55,14 +55,16 @@ export const generateResume = async (req: Request, res: Response) => {
     // Step 6: Save generated resume JSON
     const saveInfo = saveGeneratedResume(generatedResume);
 
-    // Step 7: Generate PDF (mock for now)
-    const pdfInfo = await generatePdfFromJson(generatedResume);
+    // Step 7: Generate PDF
+    const pdfInfo = await generatePdfFromJson(generatedResume, jobRole, company);
 
     return res.json({
       ok: true,
       saved: saveInfo,
       pdf: pdfInfo,
-      resume: generatedResume
+      resume: generatedResume,
+      jobRole,
+      company
     });
 
   } catch (err: any) {
