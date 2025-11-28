@@ -30,8 +30,24 @@ function renderHtmlFromResume(resume: any) {
     const title = w.position || w.name || "";
     const company = w.company || "";
     const dates = [w.startDate, w.endDate].filter(Boolean).join(" - ");
-    const highlights = Array.isArray(w.highlights) ? `<ul>${w.highlights.map((h: string) => `<li>${h}</li>`).join("")}</ul>` : "";
-    return `<div class="work-item"><strong>${title}</strong> — ${company} <div><em>${dates}</em></div>${highlights}</div>`;
+    const highlights = Array.isArray(w.highlights) ? `<ul>${w.highlights.map((h: string) => `<li>${escapeHtml(h)}</li>`).join("")}</ul>` : "";
+    return `<div class="work-item"><span class="position">${escapeHtml(title)}</span> — <span class="company">${escapeHtml(company)}</span> <div class="dates">${escapeHtml(dates)}</div>${highlights}</div>`;
+  }).join("");
+
+  const education = Array.isArray(resume.education) ? resume.education : [];
+  const eduHtml = education.map((e: any) => {
+    const institution = e.institution || "";
+    const area = e.area || "";
+    const studyType = e.studyType || "";
+    const dates = [e.startDate, e.endDate].filter(Boolean).join(" - ");
+
+    return `
+    <div class="edu-item">
+      <div class="institution"><strong>${escapeHtml(institution)}</strong></div>
+      <div class="studyType">${escapeHtml(studyType)} — ${escapeHtml(area)}</div>
+      <div class="dates">${escapeHtml(dates)}</div>
+    </div>
+  `;
   }).join("");
 
   let html = rawTemplate;
@@ -40,6 +56,7 @@ function renderHtmlFromResume(resume: any) {
   html = html.replace("{{summary}}", escapeHtml(summary));
   html = html.replace("{{skills}}", skillsHtml);
   html = html.replace("{{workItems}}", workHtml);
+  html = html.replace("{{educationItems}}", eduHtml);
 
   return html;
 }

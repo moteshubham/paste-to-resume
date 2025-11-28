@@ -5,33 +5,59 @@
   <title>Resume</title>
   <style>
     body { font-family: Arial, sans-serif; padding: 32px; }
-    h1 { margin: 0; }
-    .section { margin-top: 18px; }
-    .skills span { display:inline-block; margin-right:6px; padding:4px 8px; border:1px solid #ddd; border-radius:4px; }
-    .work-item { margin-bottom:12px; }
+    h1, h2 { margin: 0; }
+    h2 { margin-top: 24px; border-bottom: 1px solid #ccc; padding-bottom: 4px; }
+    .section { margin-bottom: 20px; }
+    .skills span { 
+      display: inline-block; 
+      padding: 4px 8px; 
+      border: 1px solid #ddd; 
+      margin: 4px 4px 0 0; 
+      border-radius: 4px; 
+      font-size: 14px;
+    }
+    .work-item { margin-bottom: 16px; }
+    .edu-item { margin-bottom: 12px; }
+    .company { font-weight: bold; }
+    .position { font-style: italic; }
+    .dates { color: #666; font-size: 14px; }
   </style>
 </head>
 <body>
+
+  <!-- Name -->
   <header>
     <h1 id="name">{{name}}</h1>
     <div id="contact">{{contact}}</div>
   </header>
 
-  <div class="section" id="summary">
+  <!-- Summary -->
+  <div class="section">
     <h2>Summary</h2>
     <div id="summaryText">{{summary}}</div>
   </div>
 
-  <div class="section" id="skills">
+  <!-- Skills -->
+  <div class="section">
     <h2>Skills</h2>
     <div class="skills">{{skills}}</div>
   </div>
 
-  <div class="section" id="work">
-    <h2>Work</h2>
+  <!-- Work Experience -->
+  <div class="section">
+    <h2>Work Experience</h2>
     <div id="workItems">
       {{workItems}}
     </div>
   </div>
+
+  <!-- Education -->
+  <div class="section">
+    <h2>Education</h2>
+    <div id="educationItems">
+      {{educationItems}}
+    </div>
+  </div>
+
 </body>
 </html>
