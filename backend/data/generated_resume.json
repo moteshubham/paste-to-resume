@@ -1,0 +1,170 @@
+{
+  "basics": {
+    "name": "Jane Doe",
+    "label": "Node.js Backend Engineer",
+    "email": "jane.doe@example.com",
+    "phone": "(123) 456-7890",
+    "url": "https://janedoe.dev",
+    "summary": "Highly skilled **Node.js backend engineer** with extensive experience in designing, developing, and deploying scalable services. Proven expertise in **AWS** cloud environments, building robust **backend** solutions, and optimizing application performance.",
+    "location": {
+      "address": "123 Main St",
+      "postalCode": "90210",
+      "city": "Beverly Hills",
+      "countryCode": "US",
+      "region": "California"
+    },
+    "profiles": [
+      {
+        "network": "LinkedIn",
+        "username": "janedoe",
+        "url": "https://linkedin.com/in/janedoe"
+      },
+      {
+        "network": "GitHub",
+        "username": "janedoe",
+        "url": "https://github.com/janedoe"
+      }
+    ]
+  },
+  "work": [
+    {
+      "company": "Tech Innovators Inc.",
+      "position": "Backend Developer",
+      "url": "https://techinnovators.com",
+      "startDate": "2020-06-01",
+      "endDate": "2023-05-31",
+      "summary": "Developed and maintained backend services for various web applications.",
+      "highlights": [
+        "Engineered and maintained high-performance **Node.js backend services** for core applications, handling significant data volumes.",
+        "Deployed and managed applications on **AWS**, leveraging services like EC2, Lambda, and S3 for scalable and reliable operations.",
+        "Developed and optimized RESTful APIs, ensuring seamless integration with frontend systems and third-party services.",
+        "Contributed to architectural decisions for **backend** systems, focusing on microservices patterns and **AWS** best practices."
+      ]
+    },
+    {
+      "company": "Digital Solutions LLC",
+      "position": "Junior Developer",
+      "url": "https://digitalsolutions.com",
+      "startDate": "2019-01-01",
+      "endDate": "2020-05-31",
+      "summary": "Contributed to the development of internal tools and client projects.",
+      "highlights": [
+        "Developed features for a customer management system using JavaScript.",
+        "Wrote unit tests to ensure code quality and maintainability.",
+        "Collaborated with senior engineers to implement new functionalities for various client projects."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "State University",
+      "url": "https://state.edu",
+      "area": "Computer Science",
+      "studyType": "Bachelor of Science",
+      "startDate": "2015-09-01",
+      "endDate": "2019-05-31",
+      "score": "3.8/4.0",
+      "courses": [
+        "Data Structures and Algorithms",
+        "Database Systems",
+        "Software Engineering"
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "name": "Backend Development",
+      "level": "Expert",
+      "keywords": [
+        "Node.js",
+        "Express.js",
+        "RESTful APIs",
+        "Microservices",
+        "Serverless Architectures",
+        "System Design"
+      ]
+    },
+    {
+      "name": "Cloud Platforms",
+      "level": "Advanced",
+      "keywords": [
+        "AWS (EC2, Lambda, S3, DynamoDB, RDS, API Gateway, CloudWatch, IAM)",
+        "Docker",
+        "CI/CD"
+      ]
+    },
+    {
+      "name": "Programming Languages",
+      "level": "Master",
+      "keywords": [
+        "JavaScript (ES6+)",
+        "TypeScript"
+      ]
+    },
+    {
+      "name": "Databases",
+      "level": "Advanced",
+      "keywords": [
+        "PostgreSQL",
+        "MongoDB",
+        "DynamoDB",
+        "MySQL"
+      ]
+    },
+    {
+      "name": "Tools & Methodologies",
+      "level": "Proficient",
+      "keywords": [
+        "Git",
+        "Jira",
+        "Agile",
+        "Scrum",
+        "Unit Testing",
+        "Integration Testing"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "E-commerce Backend Service",
+      "startDate": "2022-03-01",
+      "endDate": "2022-09-30",
+      "description": "Developed the backend for a mock e-commerce platform.",
+      "highlights": [
+        "Engineered a scalable **Node.js backend** for a mock e-commerce platform, implementing core services like user authentication, product catalog, and order processing.",
+        "Deployed backend services to **AWS EC2 instances**, configuring security groups and load balancing for high availability.",
+        "Integrated with third-party payment gateways and utilized **AWS S3** for media storage, enhancing application functionality and scalability.",
+        "Designed and optimized MongoDB schema, supporting efficient data retrieval for the **backend** application."
+      ],
+      "url": "https://github.com/janedoe/ecommerce-backend",
+      "keywords": [
+        "Node.js",
+        "Express",
+        "MongoDB",
+        "AWS EC2",
+        "AWS S3",
+        "RESTful API"
+      ]
+    },
+    {
+      "name": "Real-time Chat Application",
+      "startDate": "2021-01-01",
+      "endDate": "2021-04-30",
+      "description": "Built a real-time chat application with user presence.",
+      "highlights": [
+        "Developed a real-time chat application using **Node.js** and WebSockets, facilitating instant message delivery and user presence functionality.",
+        "Configured **AWS Lambda** functions for specific backend logic and managed message persistence using **AWS DynamoDB**, ensuring high throughput and low latency.",
+        "Utilized **AWS API Gateway** to expose WebSocket endpoints, providing a scalable entry point for client connections."
+      ],
+      "url": "https://github.com/janedoe/chat-app",
+      "keywords": [
+        "Node.js",
+        "Socket.io",
+        "AWS Lambda",
+        "AWS DynamoDB",
+        "AWS API Gateway",
+        "Backend"
+      ]
+    }
+  ]
+}
