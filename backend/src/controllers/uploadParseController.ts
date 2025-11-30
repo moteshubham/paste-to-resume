@@ -5,16 +5,18 @@ import { sendToGemini } from "../services/geminiService";
 import { extractJson } from "../utils/jsonExtractor";
 import { validateResume } from "../services/validationService";
 
-export const parseUploadedResume = async (req: Request, res: Response) => {
+type UploadRequest = Request & { file?: any };
+
+export const parseUploadedResume = async (req: UploadRequest, res: Response) => {
   try {
     if (!req.file) {
       return res.status(400).json({ ok: false, error: "No file uploaded" });
     }
 
     const buffer = fs.readFileSync(req.file.path);
-    const pdfData = await pdfParse(buffer);
+    const parsed: any = await (pdfParse as any)(buffer);
 
-    const extractedText = pdfData.text || "";
+    const extractedText = parsed.text || "";
 
     const prompt = `
 Convert the following resume text into a valid JSON Resume schema object.
