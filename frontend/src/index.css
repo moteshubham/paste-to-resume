@@ -11,11 +11,20 @@ html, body {
 }
 
 @keyframes slide-left {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(0); }
+}
+
+@keyframes slide-right {
   from { transform: translateX(100%); }
   to   { transform: translateX(0); }
 }
 
 .animate-slide-left {
   animation: slide-left 0.25s ease-out;
+}
+
+.animate-slide-right {
+  animation: slide-right 0.25s ease-out;
 }
 
