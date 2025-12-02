@@ -1,8 +1,12 @@
 import { useState } from "react";
 import { toast } from "sonner";
 import { api } from "../../services/api";
+import { useResume } from "../../context/ResumeContext";
+
+const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:4000/api";
 
 export default function LeftPanel() {
+  const { setGenerated } = useResume();
   const [jd, setJd] = useState("");
   const [jobRole, setJobRole] = useState("");
   const [company, setCompany] = useState("");
@@ -80,12 +84,32 @@ export default function LeftPanel() {
 
       <button
         className="w-full py-3 bg-[#611c27] text-white rounded-md font-semibold hover:bg-[#4e1620] transition"
-        onClick={() => {
+        onClick={async () => {
           if (!jd.trim()) return toast.error("Paste JD first");
           if (!jobRole.trim()) return toast.error("Enter job role");
           if (!company.trim()) return toast.error("Enter company name");
 
-          toast.success("Ready to generate (wired in next step)");
+          toast.loading("Generating resume...");
+
+          try {
+            const res = await api.generateResume({ jd, jobRole, company });
+
+            // Update global state
+            const pdfUrl = res.pdf?.filename 
+              ? api.pdfUrl(res.pdf.filename) 
+              : (res.pdf?.path ? `${BASE_URL.replace("/api", "")}${res.pdf.path}` : null);
+            
+            setGenerated({
+              json: res.resume,
+              pdfUrl
+            });
+
+            toast.dismiss();
+            toast.success("Resume generated");
+          } catch (err: any) {
+            toast.dismiss();
+            toast.error(err.message || "Failed to generate");
+          }
         }}
       >
         Generate Tailored Resume
