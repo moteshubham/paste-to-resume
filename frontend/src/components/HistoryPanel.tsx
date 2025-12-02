@@ -51,10 +51,16 @@ export default function HistoryPanel({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/40 z-50 flex justify-start">
+    <div 
+      className="fixed inset-0 bg-black/40 z-50 flex justify-start"
+      onClick={onClose}
+    >
 
       {/* Drawer */}
-      <div className="w-[340px] bg-white h-full p-5 overflow-y-auto shadow-xl animate-slide-left">
+      <div 
+        className="w-[340px] bg-white h-full p-5 overflow-y-auto shadow-xl animate-slide-left"
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-lg font-semibold">History</h2>
           <button onClick={onClose} className="p-2 hover:bg-gray-200 rounded">

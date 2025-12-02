@@ -33,10 +33,16 @@ export default function QuickCopyPanel({
   }
 
   return (
-    <div className="fixed inset-0 bg-black/40 z-50 flex justify-end">
+    <div 
+      className="fixed inset-0 bg-black/40 z-50 flex justify-end"
+      onClick={onClose}
+    >
 
       {/* Drawer */}
-      <div className="w-[360px] bg-white h-full p-5 overflow-y-auto shadow-xl animate-slide-right">
+      <div 
+        className="w-[360px] bg-white h-full p-5 overflow-y-auto shadow-xl animate-slide-right"
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-lg font-semibold">Quick Copy</h2>
           <button onClick={onClose} className="p-2 hover:bg-gray-200 rounded">
