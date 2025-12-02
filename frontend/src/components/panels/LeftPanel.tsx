@@ -9,6 +9,7 @@ export default function LeftPanel() {
   const [jobRole, setJobRole] = useState("");
   const [company, setCompany] = useState("");
   const [baseFileName, setBaseFileName] = useState("");
+  const [uploadedPdf, setUploadedPdf] = useState("");
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({ jd: false, jobRole: false, company: false });
 
@@ -30,6 +31,35 @@ export default function LeftPanel() {
       toast.success("Base resume saved");
     } catch (err) {
       toast.error("Invalid JSON structure");
+    }
+  }
+
+  async function handlePdfUpload(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    if (!file.name.endsWith(".pdf")) {
+      toast.error("Upload a valid PDF file");
+      return;
+    }
+
+    setUploadedPdf(file.name);
+    toast.loading("Parsing resume...");
+
+    try {
+      const res = await api.parseUploadedFile(file);
+
+      // Parsed JSON from backend → update global state
+      setGenerated({
+        json: res.parsed,
+        pdfUrl: null
+      });
+
+      toast.dismiss();
+      toast.success("Resume parsed into JSON");
+    } catch (err: any) {
+      toast.dismiss();
+      toast.error(err.message || "Failed to parse PDF");
     }
   }
 
@@ -86,6 +116,28 @@ export default function LeftPanel() {
             <span className="text-sm text-gray-600">Upload JSON Resume</span>
           )}
         </label>
+      </div>
+
+      <div>
+        <h2 className="text-lg font-semibold mb-2">Upload Resume (PDF → JSON)</h2>
+
+        <label className="block w-full p-3 text-center border border-dashed border-gray-400 rounded-md cursor-pointer hover:bg-gray-100 transition">
+          <input
+            type="file"
+            accept="application/pdf"
+            className="hidden"
+            onChange={handlePdfUpload}
+          />
+          {uploadedPdf ? (
+            <span className="text-sm text-gray-700">Uploaded: {uploadedPdf}</span>
+          ) : (
+            <span className="text-sm text-gray-600">Upload PDF Resume</span>
+          )}
+        </label>
+
+        <p className="text-xs text-gray-500 mt-1">
+          This will extract your resume text & convert it into JSON Resume format.
+        </p>
       </div>
 
       <button
