@@ -103,7 +103,7 @@ export default function CenterPanel() {
           Generate a resume or upload a PDF to view JSON here.
         </p>
       ) : (
-        <div className="bg-white border rounded-md p-3 shadow-sm max-h-[85vh] overflow-auto">
+        <div className="bg-white border rounded-md p-3 shadow-sm max-h-[85vh] overflow-auto fade-in">
           <JsonView
             data={generated.json}
             style={defaultStyles}

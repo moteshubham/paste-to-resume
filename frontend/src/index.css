@@ -5,6 +5,27 @@ html, body {
   background: #faf7f2; /* warm cream tone for unique feel */
 }
 
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c7c7c7;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a0a0a0;
+}
+
+.panel-title {
+  @apply text-lg font-semibold mb-2;
+}
+
 .json-view {
   font-size: 14px;
   line-height: 1.4;
@@ -26,5 +47,14 @@ html, body {
 
 .animate-slide-right {
   animation: slide-right 0.25s ease-out;
+}
+
+.fade-in {
+  animation: fade 0.25s ease-out;
+}
+
+@keyframes fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 

@@ -28,8 +28,11 @@ export const api = {
   saveBaseResume: (json: any) => request("POST", "/resume/base", json),
 
   // Generate Resume
-  generateResume: (data: { jd: string; jobRole: string; company: string }) =>
-    request("POST", "/generate", data),
+  generateResume: (data: {
+    jd: string;
+    jobRole: string;
+    company: string;
+  }) => request("POST", "/generate", data),
 
   // Quick Copy Fields
   getQuickFields: () => request("GET", "/resume/quick"),

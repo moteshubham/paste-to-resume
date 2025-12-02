@@ -77,7 +77,7 @@ export default function RightPanel() {
           </div>
 
           {/* PDF Viewer */}
-          <div className="border rounded-md overflow-auto bg-gray-50 flex-1">
+          <div className="border rounded-md overflow-auto bg-gray-50 flex-1 fade-in">
             <iframe
               id="pdf-frame"
               src={generated.pdfUrl}

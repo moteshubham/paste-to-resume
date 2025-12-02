@@ -38,10 +38,10 @@ export default function MainLayout({
       </header>
 
       {/* Main 3-column layout */}
-      <div className="flex flex-1 overflow-hidden">
+      <div className="flex flex-col md:flex-row flex-1 overflow-hidden">
 
         {/* Left Panel */}
-        <div className="w-[24%] min-w-[260px] max-w-[320px] border-r border-gray-300 bg-white/60 p-4 overflow-y-auto">
+        <div className="w-full md:w-[24%] min-w-[260px] max-w-[320px] border-r border-gray-300 bg-white/60 p-4 overflow-y-auto">
           {left}
         </div>
 
@@ -51,7 +51,7 @@ export default function MainLayout({
         </div>
 
         {/* Right Panel */}
-        <div className="w-[33%] min-w-[360px] bg-white p-4 overflow-y-auto">
+        <div className="w-full md:w-[33%] min-w-[360px] bg-white p-4 overflow-y-auto">
           {right}
         </div>
 
