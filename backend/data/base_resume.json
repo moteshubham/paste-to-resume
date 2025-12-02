@@ -1,3 +1,205 @@
-{}
-
-
+{
+  "basics": {
+    "name": "Shubham Mote",
+    "label": "Full-Stack Developer | React.js, Node.js, Python | 3.5+ Years of Experience in Scalable Web Applications | Delivered Enterprise Tools & Global-Facing Website",
+    "email": "moteshubham@gmail.com",
+    "phone": "(+91) 7020521478",
+    "summary": "Full-Stack Developer with 3.5+ years of experience building scalable web applications. Delivered enterprise tools and global-facing websites using React.js, Node.js, and Python. Proven expertise in optimizing performance, reducing API latency, and implementing CI/CD pipelines.",
+    "location": {
+      "address": "Baner",
+      "city": "Pune",
+      "countryCode": "IN",
+      "region": "Maharashtra"
+    },
+    "profiles": [
+      {
+        "network": "GitHub",
+        "url": "https://github.com/moteshubham"
+      },
+      {
+        "network": "LinkedIn",
+        "url": "https://linkedin.com/in/iamshubhammote"
+      },
+      {
+        "network": "Portfolio",
+        "url": "https://shubhammote.in"
+      }
+    ]
+  },
+  "work": [
+    {
+      "company": "PharmaACE",
+      "position": "Associate Software Developer",
+      "startDate": "2024-04-01",
+      "endDate": "Present",
+      "summary": "Developing robust backend services and responsive React.js UIs for enterprise tools. Migrated legacy systems to TypeScript and implemented centralized authentication systems.",
+      "highlights": [
+        "Developed a robust backend service in NodeJS for the SOW Tracker, a critical tool for key stakeholders, handling high-volume API requests and reducing response times by 40%",
+        "Built responsive React.js UIs for enterprise tools (SOW Tracker, Screener, User Control), enhancing stakeholder usability",
+        "Migrated PharmaACE.com to TypeScript with React + Node.js, improving type safety, scalability, and SEO performance, which resulted in higher global traffic and accessibility",
+        "Built a centralized User Management system with JWT-based authentication and RBAC, enabling secure access across multiple applications",
+        "Rebuilt the corporate website using React.js and Node.js, optimized for SEO and cross-browser compatibility",
+        "Integrated Redux to enhance app state management and improve frontend responsiveness",
+        "Wrote unit tests with Jest, increasing code coverage and reducing deployment bugs",
+        "Automated CI/CD pipelines with GitHub Actions, streamlining deployments and improving release efficiency"
+      ],
+      "keywords": [
+        "ReactJS",
+        "NodeJS",
+        "Python",
+        "Material UI",
+        "MySql",
+        "Github Actions"
+      ]
+    },
+    {
+      "company": "Sarvosky International System Pvt Ltd",
+      "position": "Jr. Software Developer",
+      "startDate": "2021-10-01",
+      "endDate": "2023-09-30",
+      "summary": "Engineered responsive UI components and built scalable backend APIs. Partnered with UI/UX teams to optimize app performance.",
+      "highlights": [
+        "Engineered responsive UI components with React.js, Tailwind CSS, HTML5 and Material UI",
+        "Built scalable backend APIs in NodeJS/ExpressJS, ensuring robust data handling and performance",
+        "Partnered with UI/UX teams to optimize app performance, and reduce load times"
+      ],
+      "keywords": [
+        "ReactJS",
+        "NodeJS",
+        "Tailwind",
+        "Javascript"
+      ]
+    },
+    {
+      "company": "Errorist Media Ltd",
+      "position": "Team Manager",
+      "startDate": "2019-01-01",
+      "endDate": "2021-12-31",
+      "summary": "Managed a 15-member video team, gaining leadership, client delivery & management skills.",
+      "highlights": [
+        "Managed a 15-member video team",
+        "Gained leadership, client delivery & management skills"
+      ]
+    },
+    {
+      "company": "GiantView Pvt Ltd",
+      "position": "Video Editor",
+      "startDate": "2018-01-01",
+      "endDate": "2019-12-31",
+      "summary": "Video editing and production work."
+    }
+  ],
+  "education": [
+    {
+      "institution": "Savitribai Phule Pune University",
+      "area": "Advanced Computing",
+      "studyType": "P.G.Diploma",
+      "startDate": "2023-09-01",
+      "endDate": "2024-03-31",
+      "courses": [
+        "React",
+        "NodeJS",
+        "Java",
+        "Docker",
+        "GIT"
+      ]
+    },
+    {
+      "institution": "Savitribai Phule Pune University",
+      "area": "Computer Engineering",
+      "studyType": "B.E.",
+      "startDate": "2014-08-01",
+      "endDate": "2018-05-31"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Frontend",
+      "level": "Expert",
+      "keywords": [
+        "ReactJS",
+        "Javascript",
+        "Typescript",
+        "Redux",
+        "Tailwind",
+        "Material UI",
+        "SCSS",
+        "Bootstrap",
+        "Webpack",
+        "Figma"
+      ]
+    },
+    {
+      "name": "Backend",
+      "level": "Expert",
+      "keywords": [
+        "NodeJS",
+        "Express.js",
+        "REST APIs",
+        "Python (Flask)",
+        "MySql",
+        "PostgreSQL",
+        "Prisma ORM"
+      ]
+    },
+    {
+      "name": "Tools & DevOps",
+      "level": "Advanced",
+      "keywords": [
+        "Docker",
+        "Git",
+        "Github Actions (CI/CD)",
+        "Postman",
+        "Cursor AI",
+        "Azure Apis",
+        "Jest"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "SOW Tracker",
+      "description": "Enterprise-grade tool for managing Statements of Work",
+      "highlights": [
+        "Reduced manual overhead and API latency by 40% for stakeholders"
+      ],
+      "keywords": [
+        "React",
+        "NodeJS",
+        "AWS",
+        "Docker"
+      ]
+    },
+    {
+      "name": "Screener",
+      "description": "Candidate screening platform with interview scheduling",
+      "highlights": [
+        "Integrated Microsoft APIs for automated interview scheduling, cutting manual coordination in high-volume hiring"
+      ],
+      "keywords": [
+        "React",
+        "Python Flask",
+        "Azure Apis"
+      ]
+    },
+    {
+      "name": "PharmaACE.com",
+      "description": "Rebuilt the company's primary website for a global audience",
+      "highlights": [
+        "Improved SEO and scalability, resulting in higher traffic and better global accessibility"
+      ],
+      "keywords": [
+        "React",
+        "NodeJS"
+      ]
+    }
+  ],
+  "certificates": [
+    {
+      "name": "JS Algorithms and Data Structures",
+      "issuer": "FreeCodeCamp",
+      "date": null
+    }
+  ],
+  "interests": []
+}

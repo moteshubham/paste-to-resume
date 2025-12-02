@@ -1,170 +1,214 @@
 {
   "basics": {
-    "name": "Jane Doe",
-    "label": "Node.js Backend Engineer",
-    "email": "jane.doe@example.com",
-    "phone": "(123) 456-7890",
-    "url": "https://janedoe.dev",
-    "summary": "Highly skilled **Node.js backend engineer** with extensive experience in designing, developing, and deploying scalable services. Proven expertise in **AWS** cloud environments, building robust **backend** solutions, and optimizing application performance.",
+    "name": "Shubham Mote",
+    "label": "Python Full-Stack Developer | React.js, Node.js | 3.5+ Years in Data-Driven Solutions & Scalable Web Applications | Expertise in Algorithms, SQL, and Docker",
+    "email": "moteshubham@gmail.com",
+    "phone": "(+91) 7020521478",
+    "summary": "Python Full-Stack Developer with 3.5+ years of experience designing and developing robust software solutions, particularly adept at handling large volumes of data and applying algorithms. Proven expertise as a full-stack developer with strong Javascript programming, responsive web design using React, and cross-browser UI development. Skilled in Python, Node.js, SQL, and infrastructure automation with Docker.",
     "location": {
-      "address": "123 Main St",
-      "postalCode": "90210",
-      "city": "Beverly Hills",
-      "countryCode": "US",
-      "region": "California"
+      "address": "Baner",
+      "city": "Pune",
+      "countryCode": "IN",
+      "region": "Maharashtra"
     },
     "profiles": [
       {
-        "network": "LinkedIn",
-        "username": "janedoe",
-        "url": "https://linkedin.com/in/janedoe"
+        "network": "GitHub",
+        "url": "https://github.com/moteshubham"
       },
       {
-        "network": "GitHub",
-        "username": "janedoe",
-        "url": "https://github.com/janedoe"
+        "network": "LinkedIn",
+        "url": "https://linkedin.com/in/iamshubhammote"
+      },
+      {
+        "network": "Portfolio",
+        "url": "https://shubhammote.in"
       }
     ]
   },
   "work": [
     {
-      "company": "Tech Innovators Inc.",
-      "position": "Backend Developer",
-      "url": "https://techinnovators.com",
-      "startDate": "2020-06-01",
-      "endDate": "2023-05-31",
-      "summary": "Developed and maintained backend services for various web applications.",
+      "company": "PharmaACE",
+      "position": "Associate Software Developer",
+      "startDate": "2024-04-01",
+      "endDate": "Present",
+      "summary": "Developing robust backend services and responsive React.js UIs for enterprise tools. Migrated legacy systems to TypeScript and implemented centralized authentication systems.",
       "highlights": [
-        "Engineered and maintained high-performance **Node.js backend services** for core applications, handling significant data volumes.",
-        "Deployed and managed applications on **AWS**, leveraging services like EC2, Lambda, and S3 for scalable and reliable operations.",
-        "Developed and optimized RESTful APIs, ensuring seamless integration with frontend systems and third-party services.",
-        "Contributed to architectural decisions for **backend** systems, focusing on microservices patterns and **AWS** best practices."
+        "Developed robust backend services, including a critical NodeJS service for SOW Tracker, handling high-volume API requests and reducing response times by 40%, demonstrating ability to process large volumes of data efficiently.",
+        "Engineered responsive React.js UIs for enterprise tools (SOW Tracker, Screener, User Control), ensuring cross-browser and cross-platform compatibility and enhancing usability through modern user interface frameworks.",
+        "Migrated PharmaACE.com to TypeScript with React and Node.js, improving type safety, scalability, and SEO performance, aligning with best practices for web application development and responsive web design.",
+        "Built a centralized User Management system with JWT-based authentication and RBAC, enabling secure access across multiple applications, demonstrating strong programming skills and solution design.",
+        "Rebuilt the corporate website using React.js and Node.js, optimized for SEO and cross-browser compatibility, applying responsive web design principles.",
+        "Integrated Redux to enhance app state management, improving frontend responsiveness and leveraging modern user interface libraries.",
+        "Wrote unit tests with Jest, increasing code coverage and reducing deployment bugs, contributing to robust software solutions.",
+        "Automated CI/CD pipelines with GitHub Actions, streamlining deployments and improving release efficiency, showcasing experience with infrastructure automation."
+      ],
+      "keywords": [
+        "ReactJS",
+        "NodeJS",
+        "Python",
+        "Material UI",
+        "MySql",
+        "Github Actions"
       ]
     },
     {
-      "company": "Digital Solutions LLC",
-      "position": "Junior Developer",
-      "url": "https://digitalsolutions.com",
-      "startDate": "2019-01-01",
-      "endDate": "2020-05-31",
-      "summary": "Contributed to the development of internal tools and client projects.",
+      "company": "Sarvosky International System Pvt Ltd",
+      "position": "Jr. Software Developer",
+      "startDate": "2021-10-01",
+      "endDate": "2023-09-30",
+      "summary": "Engineered responsive UI components and built scalable backend APIs. Partnered with UI/UX teams to optimize app performance.",
       "highlights": [
-        "Developed features for a customer management system using JavaScript.",
-        "Wrote unit tests to ensure code quality and maintainability.",
-        "Collaborated with senior engineers to implement new functionalities for various client projects."
+        "Engineered responsive UI components with React.js, Tailwind CSS, HTML5, and Material UI, demonstrating strong Javascript programming and responsive web design expertise.",
+        "Built scalable backend APIs in NodeJS/ExpressJS, ensuring robust data handling and performance, contributing to comprehensive full-stack development.",
+        "Partnered with UI/UX teams to optimize app performance and reduce load times, focusing on cross-browser and cross-platform UI development."
+      ],
+      "keywords": [
+        "ReactJS",
+        "NodeJS",
+        "Tailwind",
+        "Javascript"
       ]
+    },
+    {
+      "company": "Errorist Media Ltd",
+      "position": "Team Manager",
+      "startDate": "2019-01-01",
+      "endDate": "2021-12-31",
+      "summary": "Managed a 15-member video team, gaining leadership, client delivery & management skills.",
+      "highlights": [
+        "Managed a 15-member video team",
+        "Gained leadership, client delivery & management skills"
+      ]
+    },
+    {
+      "company": "GiantView Pvt Ltd",
+      "position": "Video Editor",
+      "startDate": "2018-01-01",
+      "endDate": "2019-12-31",
+      "summary": "Video editing and production work."
     }
   ],
   "education": [
     {
-      "institution": "State University",
-      "url": "https://state.edu",
-      "area": "Computer Science",
-      "studyType": "Bachelor of Science",
-      "startDate": "2015-09-01",
-      "endDate": "2019-05-31",
-      "score": "3.8/4.0",
+      "institution": "Savitribai Phule Pune University",
+      "area": "Advanced Computing",
+      "studyType": "P.G.Diploma",
+      "startDate": "2023-09-01",
+      "endDate": "2024-03-31",
       "courses": [
-        "Data Structures and Algorithms",
-        "Database Systems",
-        "Software Engineering"
+        "React",
+        "NodeJS",
+        "Java",
+        "Docker",
+        "GIT"
       ]
+    },
+    {
+      "institution": "Savitribai Phule Pune University",
+      "area": "Computer Engineering",
+      "studyType": "B.E.",
+      "startDate": "2014-08-01",
+      "endDate": "2018-05-31"
     }
   ],
   "skills": [
     {
-      "name": "Backend Development",
+      "name": "Programming Languages & Core Concepts",
       "level": "Expert",
       "keywords": [
-        "Node.js",
+        "Python",
+        "Javascript",
+        "Typescript",
+        "Algorithms",
+        "Data Structures",
+        "SQL"
+      ]
+    },
+    {
+      "name": "Frontend Development",
+      "level": "Expert",
+      "keywords": [
+        "ReactJS",
+        "Redux",
+        "Responsive Web Design",
+        "Material UI",
+        "Tailwind CSS",
+        "SCSS",
+        "Webpack",
+        "Cross-browser compatibility"
+      ]
+    },
+    {
+      "name": "Backend Development & Databases",
+      "level": "Expert",
+      "keywords": [
+        "NodeJS",
         "Express.js",
-        "RESTful APIs",
-        "Microservices",
-        "Serverless Architectures",
-        "System Design"
-      ]
-    },
-    {
-      "name": "Cloud Platforms",
-      "level": "Advanced",
-      "keywords": [
-        "AWS (EC2, Lambda, S3, DynamoDB, RDS, API Gateway, CloudWatch, IAM)",
-        "Docker",
-        "CI/CD"
-      ]
-    },
-    {
-      "name": "Programming Languages",
-      "level": "Master",
-      "keywords": [
-        "JavaScript (ES6+)",
-        "TypeScript"
-      ]
-    },
-    {
-      "name": "Databases",
-      "level": "Advanced",
-      "keywords": [
+        "Python (Flask)",
+        "REST APIs",
+        "MySQL",
         "PostgreSQL",
-        "MongoDB",
-        "DynamoDB",
-        "MySQL"
+        "Prisma ORM",
+        "Database Management"
       ]
     },
     {
-      "name": "Tools & Methodologies",
-      "level": "Proficient",
+      "name": "Tools & DevOps",
+      "level": "Advanced",
       "keywords": [
+        "Docker",
         "Git",
-        "Jira",
-        "Agile",
-        "Scrum",
-        "Unit Testing",
-        "Integration Testing"
+        "Github Actions (CI/CD)",
+        "Postman",
+        "Jest"
       ]
     }
   ],
   "projects": [
     {
-      "name": "E-commerce Backend Service",
-      "startDate": "2022-03-01",
-      "endDate": "2022-09-30",
-      "description": "Developed the backend for a mock e-commerce platform.",
+      "name": "SOW Tracker",
+      "description": "Enterprise-grade tool designed for managing Statements of Work within the financial domain, demonstrating expertise in full-stack development.",
       "highlights": [
-        "Engineered a scalable **Node.js backend** for a mock e-commerce platform, implementing core services like user authentication, product catalog, and order processing.",
-        "Deployed backend services to **AWS EC2 instances**, configuring security groups and load balancing for high availability.",
-        "Integrated with third-party payment gateways and utilized **AWS S3** for media storage, enhancing application functionality and scalability.",
-        "Designed and optimized MongoDB schema, supporting efficient data retrieval for the **backend** application."
+        "Developed robust software solutions to process large volumes of data, reducing manual overhead and API latency by 40% for key stakeholders, leveraging React, NodeJS, and Docker."
       ],
-      "url": "https://github.com/janedoe/ecommerce-backend",
       "keywords": [
-        "Node.js",
-        "Express",
-        "MongoDB",
-        "AWS EC2",
-        "AWS S3",
-        "RESTful API"
+        "React",
+        "NodeJS",
+        "AWS",
+        "Docker"
       ]
     },
     {
-      "name": "Real-time Chat Application",
-      "startDate": "2021-01-01",
-      "endDate": "2021-04-30",
-      "description": "Built a real-time chat application with user presence.",
+      "name": "Screener",
+      "description": "Candidate screening platform showcasing scalable web application framework development and integration capabilities.",
       "highlights": [
-        "Developed a real-time chat application using **Node.js** and WebSockets, facilitating instant message delivery and user presence functionality.",
-        "Configured **AWS Lambda** functions for specific backend logic and managed message persistence using **AWS DynamoDB**, ensuring high throughput and low latency.",
-        "Utilized **AWS API Gateway** to expose WebSocket endpoints, providing a scalable entry point for client connections."
+        "Integrated Microsoft APIs for automated interview scheduling, cutting manual coordination in high-volume hiring, demonstrating strong programming skills and solution design."
       ],
-      "url": "https://github.com/janedoe/chat-app",
       "keywords": [
-        "Node.js",
-        "Socket.io",
-        "AWS Lambda",
-        "AWS DynamoDB",
-        "AWS API Gateway",
-        "Backend"
+        "React",
+        "Python Flask",
+        "Azure Apis"
+      ]
+    },
+    {
+      "name": "PharmaACE.com",
+      "description": "Rebuilt the company's primary website using modern user interface libraries, optimized for global accessibility and responsive web design.",
+      "highlights": [
+        "Improved SEO and scalability, resulting in higher traffic and better global accessibility, showcasing cross-browser and cross-platform UI development expertise."
+      ],
+      "keywords": [
+        "React",
+        "NodeJS"
       ]
     }
-  ]
+  ],
+  "certificates": [
+    {
+      "name": "JS Algorithms and Data Structures",
+      "issuer": "FreeCodeCamp",
+      "date": null
+    }
+  ],
+  "interests": []
 }
