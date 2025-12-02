@@ -1,0 +1,40 @@
+import { ReactNode } from "react";
+
+export default function MainLayout({ left, center, right }: {
+  left: ReactNode;
+  center: ReactNode;
+  right: ReactNode;
+}) {
+  return (
+    <div className="w-full min-h-screen flex flex-col bg-[#faf7f2] text-gray-900">
+      
+      {/* Top Navbar */}
+      <header className="w-full px-6 py-4 border-b border-gray-300 bg-white/70 backdrop-blur-md">
+        <h1 className="text-2xl font-semibold tracking-tight">
+          PasteToResume
+        </h1>
+      </header>
+
+      {/* Main 3-column layout */}
+      <div className="flex flex-1 overflow-hidden">
+
+        {/* Left Panel */}
+        <div className="w-[24%] min-w-[260px] max-w-[320px] border-r border-gray-300 bg-white/60 p-4 overflow-y-auto">
+          {left}
+        </div>
+
+        {/* Center Panel */}
+        <div className="flex-1 border-r border-gray-300 bg-white/80 p-4 overflow-y-auto">
+          {center}
+        </div>
+
+        {/* Right Panel */}
+        <div className="w-[33%] min-w-[360px] bg-white p-4 overflow-y-auto">
+          {right}
+        </div>
+
+      </div>
+    </div>
+  );
+}
+
