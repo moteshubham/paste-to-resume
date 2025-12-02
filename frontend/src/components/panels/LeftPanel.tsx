@@ -3,14 +3,14 @@ import { toast } from "sonner";
 import { api } from "../../services/api";
 import { useResume } from "../../context/ResumeContext";
 
-const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:4000/api";
-
 export default function LeftPanel() {
   const { setGenerated } = useResume();
   const [jd, setJd] = useState("");
   const [jobRole, setJobRole] = useState("");
   const [company, setCompany] = useState("");
   const [baseFileName, setBaseFileName] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState({ jd: false, jobRole: false, company: false });
 
   async function handleUploadJson(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
@@ -37,9 +37,11 @@ export default function LeftPanel() {
     <div className="space-y-6">
 
       <div>
-        <h2 className="text-lg font-semibold mb-2">Job Description</h2>
+        <h2 className="text-lg font-semibold mb-2 transition-all duration-150">Job Description</h2>
         <textarea
-          className="w-full h-48 p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#611c27] bg-white/90"
+          className={`w-full h-48 p-3 rounded-md border ${
+            errors.jd ? "border-red-500" : "border-gray-300"
+          } focus:outline-none focus:ring-2 focus:ring-[#611c27] bg-white/90`}
           placeholder="Paste JD here..."
           value={jd}
           onChange={(e) => setJd(e.target.value)}
@@ -47,25 +49,29 @@ export default function LeftPanel() {
       </div>
 
       <div>
-        <h2 className="text-lg font-semibold mb-2">Job Details</h2>
+        <h2 className="text-lg font-semibold mb-2 transition-all duration-150">Job Details</h2>
         <input
           type="text"
           placeholder="Job Role"
-          className="w-full p-2 mb-2 border rounded-md border-gray-300 focus:ring-2 focus:ring-[#611c27]"
+          className={`w-full p-2 mb-2 border rounded-md ${
+            errors.jobRole ? "border-red-500" : "border-gray-300"
+          } focus:ring-2 focus:ring-[#611c27]`}
           value={jobRole}
           onChange={(e) => setJobRole(e.target.value)}
         />
         <input
           type="text"
           placeholder="Company Name"
-          className="w-full p-2 border rounded-md border-gray-300 focus:ring-2 focus:ring-[#611c27]"
+          className={`w-full p-2 border rounded-md ${
+            errors.company ? "border-red-500" : "border-gray-300"
+          } focus:ring-2 focus:ring-[#611c27]`}
           value={company}
           onChange={(e) => setCompany(e.target.value)}
         />
       </div>
 
       <div>
-        <h2 className="text-lg font-semibold mb-2">Base Resume</h2>
+        <h2 className="text-lg font-semibold mb-2 transition-all duration-150">Base Resume</h2>
 
         <label className="block w-full p-3 text-center border border-dashed border-gray-400 rounded-md cursor-pointer hover:bg-gray-100 transition">
           <input
@@ -83,36 +89,52 @@ export default function LeftPanel() {
       </div>
 
       <button
-        className="w-full py-3 bg-[#611c27] text-white rounded-md font-semibold hover:bg-[#4e1620] transition"
+        disabled={loading}
+        className={`w-full py-3 rounded-md font-semibold transition flex items-center justify-center gap-2
+          ${loading ? "bg-gray-400" : "bg-[#611c27] hover:bg-[#4e1620] text-white"}
+        `}
         onClick={async () => {
-          if (!jd.trim()) return toast.error("Paste JD first");
-          if (!jobRole.trim()) return toast.error("Enter job role");
-          if (!company.trim()) return toast.error("Enter company name");
+          // reset visual errors
+          setErrors({ jd: false, jobRole: false, company: false });
 
+          const newErr = {
+            jd: !jd.trim(),
+            jobRole: !jobRole.trim(),
+            company: !company.trim()
+          };
+
+          setErrors(newErr);
+
+          if (Object.values(newErr).some(Boolean)) {
+            toast.error("Fill required fields");
+            return;
+          }
+
+          setLoading(true);
           toast.loading("Generating resume...");
 
           try {
             const res = await api.generateResume({ jd, jobRole, company });
 
-            // Update global state
-            const pdfUrl = res.pdf?.filename 
-              ? api.pdfUrl(res.pdf.filename) 
-              : (res.pdf?.path ? `${BASE_URL.replace("/api", "")}${res.pdf.path}` : null);
-            
             setGenerated({
               json: res.resume,
-              pdfUrl
+              pdfUrl: res.pdf?.filename ? api.pdfUrl(res.pdf.filename) : null
             });
 
             toast.dismiss();
             toast.success("Resume generated");
           } catch (err: any) {
             toast.dismiss();
-            toast.error(err.message || "Failed to generate");
+            toast.error(err.message || "Something went wrong");
           }
+
+          setLoading(false);
         }}
       >
-        Generate Tailored Resume
+        {loading && (
+          <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+        )}
+        {loading ? "Generating..." : "Generate Tailored Resume"}
       </button>
     </div>
   );
