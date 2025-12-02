@@ -5,3 +5,8 @@ html, body {
   background: #faf7f2; /* warm cream tone for unique feel */
 }
 
+.json-view {
+  font-size: 14px;
+  line-height: 1.4;
+}
+
