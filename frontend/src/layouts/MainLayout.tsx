@@ -1,18 +1,31 @@
 import type { ReactNode } from "react";
 
-export default function MainLayout({ left, center, right }: {
+export default function MainLayout({
+  left,
+  center,
+  right,
+  onOpenQuickCopy
+}: {
   left: ReactNode;
   center: ReactNode;
   right: ReactNode;
+  onOpenQuickCopy: () => void;
 }) {
   return (
     <div className="w-full min-h-screen flex flex-col bg-[#faf7f2] text-gray-900">
       
       {/* Top Navbar */}
-      <header className="w-full px-6 py-4 border-b border-gray-300 bg-white/70 backdrop-blur-md">
+      <header className="w-full px-6 py-4 border-b border-gray-300 bg-white/70 backdrop-blur-md flex items-center justify-between">
         <h1 className="text-2xl font-semibold tracking-tight">
           PasteToResume
         </h1>
+
+        <button
+          onClick={onOpenQuickCopy}
+          className="px-4 py-2 bg-[#611c27] text-white rounded-md hover:bg-[#4e1620] transition"
+        >
+          Quick Copy
+        </button>
       </header>
 
       {/* Main 3-column layout */}
