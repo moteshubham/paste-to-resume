@@ -15,15 +15,54 @@ function renderHtmlFromResume(resume: any) {
 
   const name = resume?.basics?.name || "";
   const contactParts: string[] = [];
-  if (resume?.basics?.email) contactParts.push(resume.basics.email);
-  if (resume?.basics?.phone) contactParts.push(resume.basics.phone);
-  if (resume?.basics?.location?.city) contactParts.push(resume.basics.location.city);
-  const contact = contactParts.join(" | ");
+  if (resume?.basics?.email) contactParts.push(`<span>${escapeHtml(resume.basics.email)}</span>`);
+  if (resume?.basics?.phone) contactParts.push(`<span>${escapeHtml(resume.basics.phone)}</span>`);
+  if (resume?.basics?.location?.city) contactParts.push(`<span>${escapeHtml(resume.basics.location.city)}</span>`);
+  // Add profiles (LinkedIn, GitHub, etc.)
+  if (Array.isArray(resume?.basics?.profiles)) {
+    resume.basics.profiles.forEach((profile: any) => {
+      if (profile.network) {
+        // Extract username from URL or use username field
+        let displayText = profile.username || "";
+        if (!displayText && profile.url) {
+          // Try to extract username from URL (e.g., github.com/username -> username)
+          const urlMatch = profile.url.match(/\/([^\/]+)\/?$/);
+          if (urlMatch) displayText = urlMatch[1];
+          else displayText = profile.url;
+        }
+        if (displayText) {
+          contactParts.push(`<span>${escapeHtml(profile.network)}: ${escapeHtml(displayText)}</span>`);
+        }
+      }
+    });
+  }
+  const contact = contactParts.join("");
 
   const summary = resume?.basics?.summary || "";
 
-  const skillsArr = Array.isArray(resume.skills) ? resume.skills : (resume.skills?.keywords || []);
-  const skillsHtml = (skillsArr || []).map((s: any) => `<span>${String(s)}</span>`).join("");
+  // Fix skills rendering - extract keywords from skill objects
+  let skillsHtml = "";
+  if (Array.isArray(resume.skills)) {
+    const allKeywords: string[] = [];
+    resume.skills.forEach((skill: any) => {
+      if (skill && typeof skill === 'object') {
+        // If skill has keywords array, use those
+        if (Array.isArray(skill.keywords)) {
+          allKeywords.push(...skill.keywords);
+        } else if (skill.name) {
+          // If it's an object with a name, use the name
+          allKeywords.push(skill.name);
+        }
+      } else if (typeof skill === 'string') {
+        // If it's already a string, use it directly
+        allKeywords.push(skill);
+      }
+    });
+    skillsHtml = allKeywords.map((keyword: string) => `<span>${escapeHtml(String(keyword))}</span>`).join("");
+  } else if (resume.skills?.keywords && Array.isArray(resume.skills.keywords)) {
+    // Fallback: if skills is an object with keywords array
+    skillsHtml = resume.skills.keywords.map((keyword: string) => `<span>${escapeHtml(String(keyword))}</span>`).join("");
+  }
 
   const work = Array.isArray(resume.work) ? resume.work : [];
   const workHtml = work.map((w: any) => {
@@ -33,7 +72,15 @@ function renderHtmlFromResume(resume: any) {
     const highlights = Array.isArray(w.highlights)
       ? `<ul>${w.highlights.map((h: string) => `<li>${escapeHtml(h)}</li>`).join("")}</ul>`
       : "";
-    return `<div class="work-item"><span class="position">${escapeHtml(title)}</span> — <span class="company">${escapeHtml(company)}</span> <div class="dates">${escapeHtml(dates)}</div>${highlights}</div>`;
+    return `<div class="work-item">
+      <div class="work-header">
+        <div>
+          <span class="work-title">${escapeHtml(title)}</span> — <span class="work-company">${escapeHtml(company)}</span>
+        </div>
+        <div class="work-dates">${escapeHtml(dates)}</div>
+      </div>
+      ${highlights}
+    </div>`;
   }).join("");
 
   const projects = Array.isArray(resume.projects) ? resume.projects : [];
@@ -71,12 +118,12 @@ function renderHtmlFromResume(resume: any) {
 
   let html = rawTemplate;
   html = html.replace("{{name}}", escapeHtml(name));
-  html = html.replace("{{contact}}", escapeHtml(contact));
+  html = html.replace("{{contact}}", contact); // contact already has HTML, don't escape
   html = html.replace("{{summary}}", escapeHtml(summary));
-  html = html.replace("{{skills}}", skillsHtml);
-  html = html.replace("{{workItems}}", workHtml);
-  html = html.replace("{{projectItems}}", projectHtml);
-  html = html.replace("{{educationItems}}", eduHtml);
+  html = html.replace("{{skills}}", skillsHtml); // skillsHtml already has HTML
+  html = html.replace("{{workItems}}", workHtml); // workHtml already has HTML
+  html = html.replace("{{projectItems}}", projectHtml); // projectHtml already has HTML
+  html = html.replace("{{educationItems}}", eduHtml); // eduHtml already has HTML
 
   return html;
 }
@@ -107,7 +154,7 @@ export const generatePdfFromJson = async (data: any, jobRole?: string, company?:
   try {
     const page = await browser.newPage();
     await page.setContent(html, { waitUntil: "networkidle0" });
-    await page.pdf({ path: outPath, format: "A4", printBackground: true, margin: { top: "20mm", bottom: "20mm", left: "16mm", right: "16mm" } });
+    await page.pdf({ path: outPath, format: "A4", printBackground: true, margin: { top: "12mm", bottom: "12mm", left: "12mm", right: "12mm" } });
   } finally {
     await browser.close();
   }
